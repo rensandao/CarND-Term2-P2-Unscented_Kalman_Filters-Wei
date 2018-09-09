@@ -102,7 +102,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
   	//cout<< "UKF Initialization:" << endl;
   	x_ << 1,1,0,0,0; //free set
     
-	//create covariance matrix
+	//create covariance matrix. Data comes from the class.
 	P_ <<  0.0043,   -0.0013,    0.0030,   -0.0022,   -0.0020,
 	      -0.0013,    0.0077,    0.0011,    0.0071,    0.0060,
 	       0.0030,    0.0011,    0.0054,    0.0007,    0.0008,
@@ -162,9 +162,10 @@ void UKF::Prediction(double delta_t) {
   */
 	
 	/****** 1. Generate sigma points ******/  
-
+	//set lambda_ 
 	lambda_ = 3- n_x_;
-    //create sigma point matrix
+    	
+	//create sigma point matrix
 	MatrixXd Xsig = MatrixXd(n_x_, 2 * n_x_ + 1);
 
 	//calculate square root of P
@@ -184,7 +185,7 @@ void UKF::Prediction(double delta_t) {
 
 	/*****1.1 augmented sigma points******/
 	//define spreading parameter
-  //	lambda_ = 3 - n_aug_;
+  	lambda_ = 3 - n_aug_;
 	  
 	//create augmented mean vector
 	VectorXd x_aug_ = VectorXd(n_aug_);
@@ -313,7 +314,7 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
 
     /****** 1. predict Radar Measurement******/
     
-    //set measurement dimension, lidar can measure px, py
+    	//set measurement dimension, lidar can measure px, py
 	int n_z = 2; 
 				
 	//create matrix for sigma points in measurement space
@@ -404,7 +405,8 @@ void UKF::UpdateRadar(MeasurementPackage meas_package){
   You'll also need to calculate the radar NIS.
   */
     /****** 1. predict Radar Measurement******/
-//set measurement dimension, radar can measure r, phi, and r_dot
+	
+	//set measurement dimension, radar can measure r, phi, and r_dot
 	int n_z = 3; 
 				
 	//create matrix for sigma points in measurement space

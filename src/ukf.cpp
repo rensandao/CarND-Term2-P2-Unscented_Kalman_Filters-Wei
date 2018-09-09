@@ -102,7 +102,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
   	//cout<< "UKF Initialization:" << endl;
   	x_ << 1,1,0,0,0; //free set
     
-	//create covariance matrix. Data comes from the class.
+	//create covariance matrix. Data comes from the class 
 	P_ <<  0.0043,   -0.0013,    0.0030,   -0.0022,   -0.0020,
 	      -0.0013,    0.0077,    0.0011,    0.0071,    0.0060,
 	       0.0030,    0.0011,    0.0054,    0.0007,    0.0008,
@@ -162,10 +162,8 @@ void UKF::Prediction(double delta_t) {
   */
 	
 	/****** 1. Generate sigma points ******/  
-	//set lambda_ 
-	lambda_ = 3- n_x_;
-    	
-	//create sigma point matrix
+
+    //create sigma point matrix
 	MatrixXd Xsig = MatrixXd(n_x_, 2 * n_x_ + 1);
 
 	//calculate square root of P
@@ -175,7 +173,7 @@ void UKF::Prediction(double delta_t) {
 	Xsig.col(0)  = x_;
 
 	//lamda_
-	lambda_ = 3 - n_aug_;
+	lambda_ = 3 - n_x_;
 
 	//set remaining sigma points
 	for (int i = 0; i < n_x_; i++){
@@ -314,7 +312,7 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
 
     /****** 1. predict Radar Measurement******/
     
-    	//set measurement dimension, lidar can measure px, py
+    //set measurement dimension, lidar can measure px, py
 	int n_z = 2; 
 				
 	//create matrix for sigma points in measurement space

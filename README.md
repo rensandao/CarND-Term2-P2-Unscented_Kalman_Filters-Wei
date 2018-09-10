@@ -24,12 +24,13 @@ Two set of data were used in the simulation. There are some difference between t
 In two different simulated runs, my Unscented Kalman Filter produces the below results in the form of [px, py, vx, vy]. The x-position is shown as 'px', y-position as 'py', velocity in the x-direction is 'vx', while velocity in the y-direction is 'vy'.Residual error is calculated by mean squared error (MSE).
 
 
-Here is the accuracy:
+Here come the two errors:
 
  EKF : RMSE <= [0.0965, 0.0854, 0.4158, 0.4321]
+ 
  UKF : RMSE <= [0.0880, 0.0900, 0.3862, 0.2955]
  
- From the RMSE, we can find that UKF shows a better effect espically in velocity. And I think the parameters could be adjustmented for more which would do better.
+ From the RMSE, we can find that UKF shows a better effect espically in velocity. And I think the parameters could be adjustmented for more trial, which would do better.
  
  EKF:
  

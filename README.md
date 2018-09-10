@@ -30,7 +30,7 @@ Here come the two errors:
  
  UKF : RMSE <= [0.0880, 0.0900, 0.3862, 0.2955]
  
- From the reslut, we can find that UKF shows a better effect than EKF's, espically in velocity. And I think the parameters could be adjustmented for more trial, which would do better.
+ From the result, we can find that UKF shows a better effect than EKF's, espically in velocity. And I think the parameters could be adjustmented for more trial, which would do better.
  
  EKF:
  

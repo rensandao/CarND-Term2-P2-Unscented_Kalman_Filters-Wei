@@ -32,8 +32,10 @@ Here is the accuracy:
  From the RMSE, we can find that UKF shows a better effect espically in velocity. And I think the parameters could be adjustmented for more which would do better.
  
  EKF:
+ 
 <img src="./Images/EKF-dataset1.jpg" width="400px">  
 
 UKF:
-<img src="./Images/UKF-dataset2.jpg" width="400px">
+
+<img src="./Images/UKF-dataset1.jpg" width="400px">
 

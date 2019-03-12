@@ -214,14 +214,13 @@ void UKF::Prediction(double delta_t) {
 		Xsig_aug_.col(i+1)       = x_aug_ + sqrt(lambda_+n_aug_) * L.col(i);
 		Xsig_aug_.col(i+1+n_aug_) = x_aug_ - sqrt(lambda_+n_aug_) * L.col(i);
 	}
-	
 
 	/****** 2.predict sigma point ******/
 
 	//create matrix with predicted sigma points as columns
 	//MatrixXd Xsig_pred_ = MatrixXd(n_x_, 2 * n_aug_ + 1);
 	//predict sigma points
-	for (int i = 0; i< 2*n_aug_+1; i++){
+	for (int i = 0; i< 2*n_aug_+1; i++) {
 
 		//extract values for better readability
 		double p_x = Xsig_aug_(0,i);
@@ -239,8 +238,7 @@ void UKF::Prediction(double delta_t) {
 		if (fabs(yawd) > 0.001) {
 			px_p = p_x + v/yawd * ( sin (yaw + yawd*delta_t) - sin(yaw));
 			py_p = p_y + v/yawd * ( cos(yaw) - cos(yaw+yawd*delta_t) );
-		}
-		else {
+		} else {
 			px_p = p_x + v*delta_t*cos(yaw);
 			py_p = p_y + v*delta_t*sin(yaw);
 		}

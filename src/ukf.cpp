@@ -115,7 +115,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
       */
 		double ro = meas_package.raw_measurements_(0);
 		double phi = meas_package.raw_measurements_(1);
-		//float ro_dot = meas_package.raw_measurements_(2);
+		//float ro_dot = meas_package.raw_measurements_(2); CTRV model means costant velocity.
 		x_(0) = ro * cos(phi);
 		x_(1) = ro * sin(phi);      
     }
@@ -130,7 +130,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
     // initialize first
     time_us_ = meas_package.timestamp_;
     is_initialized_ = true;
-    return;  
+    return ;  
   }
   
 	/****** predict ******/
